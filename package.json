@@ -6,7 +6,7 @@
   "scripts": {
     "build": "remix build",
     "dev": "concurrently \"npm run sass\" \"remix dev --port 4444\"",
-    "start": "remix-serve build",
+    "start": "remix-serve build --port 4444",
     "typecheck": "tsc",
     "sass": "sass --watch app/:app/"
   },
