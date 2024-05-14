@@ -25,8 +25,5 @@ COPY --from=builder /app/node_modules /app/node_modules
 # Copy remaining project files (excluding node_modules)
 COPY . .npmignore
 
-# Expose the port used by Remix (default is 3000)
-EXPOSE 3000
-
 # Run the Remix production server
 CMD ["npm", "run", "start"]
