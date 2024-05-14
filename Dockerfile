@@ -1,4 +1,4 @@
-# Etapa de construcción
+# Build stage
 FROM node:latest AS builder
 
 WORKDIR /app
@@ -9,10 +9,14 @@ COPY package*.json ./
 # Install dependencies (cache optimization for subsequent builds)
 RUN npm install --production
 
-# Copy project files (excluding node_modules and .npmignore)
-COPY . .
+# Run Remix build command (ensure it's in your package.json scripts)
+RUN remix-serve build
 
-# Etapa de ejecución
+# (Optional) Specify build directory if it's not /app/build
+# If Remix uses a different default build directory, adjust the path here
+COPY --from=builder /app/build /app/build
+
+# Runtime stage
 FROM node:18-alpine AS runner
 
 # Set working directory for runtime
@@ -20,7 +24,7 @@ WORKDIR /app
 
 # Copy only the required files from builder stage (excluding node_modules)
 COPY --from=builder /app/node_modules /app/node_modules
-COPY --from=builder /app ./
+COPY --from=builder /app .npmignore
 
 # Run the Remix production server
 CMD ["npm", "run", "start"]
