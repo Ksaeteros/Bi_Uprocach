@@ -3,10 +3,14 @@ FROM node:latest AS builder
 
 WORKDIR /app
 
-# Copy package.json and package-lock.json to install dependencies efficiently
+# Copy package*.json to install dependencies efficiently
 COPY package*.json ./
-COPY .npmignore ./
+
+# Install dependencies (cache optimization for subsequent builds)
 RUN npm install --production
+
+# Copy project files (excluding node_modules and .npmignore)
+COPY --from=literal . .npmignore
 COPY . .
 
 # Etapa de ejecución
