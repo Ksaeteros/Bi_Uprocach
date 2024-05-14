@@ -13,6 +13,8 @@ COPY . .npmignore
 # Switch to a slimmer Node.js image for runtime
 FROM node:18-alpine AS runner
 
+# Set working directory for runtime
+WORKDIR /app
 
 # Copy only the required files from builder stage (excluding node_modules)
 COPY --from=builder /app/node_modules /app/node_modules
