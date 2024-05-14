@@ -1,4 +1,3 @@
-# Use a specific Node.js version (adjust as needed)
 FROM node:18-alpine AS builder
 
 # Set working directory for build stage
