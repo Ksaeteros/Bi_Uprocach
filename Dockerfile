@@ -10,7 +10,7 @@ COPY package*.json ./
 RUN npm install --production
 
 # Copy project files (excluding node_modules and .npmignore)
-COPY --from=literal . .npmignore
+COPY --from=literal .npmignore ./
 COPY . .
 
 # Etapa de ejecución
