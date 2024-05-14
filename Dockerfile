@@ -1,5 +1,5 @@
 # Build stage
-FROM node:latest AS builder
+FROM node:18-alpine AS builder
 
 WORKDIR /app
 
@@ -24,7 +24,7 @@ WORKDIR /app
 
 # Copy only the required files from builder stage (excluding node_modules)
 COPY --from=builder /app/node_modules /app/node_modules
-COPY --from=builder /app .npmignore
+COPY --from=builder /app ./
 
 # Run the Remix production server
 CMD ["npm", "run", "start"]
