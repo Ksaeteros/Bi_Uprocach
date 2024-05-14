@@ -1,5 +1,5 @@
 # Utiliza una imagen oficial de Node.js como base
-FROM node:latest
+FROM node:latest AS builder
 
 # Set working directory for build stage
 WORKDIR /app
