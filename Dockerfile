@@ -11,7 +11,7 @@ COPY package*.json ./
 RUN npm install --production
 
 # Copy remaining project files (excluding node_modules and potentially other files based on .npmignore)
-COPY . .npmignore
+COPY . .
 
 # Switch to a slimmer Node.js image for runtime
 FROM node:18-alpine AS runner
@@ -23,7 +23,7 @@ WORKDIR /app
 COPY --from=builder /app/node_modules /app/node_modules
 
 # Copy remaining project files (excluding node_modules)
-COPY . .npmignore
+COPY . .
 
 # Run the Remix production server
 CMD ["npm", "run", "start"]
