@@ -1,26 +1,30 @@
-# Utiliza una imagen oficial de Node.js como base para la etapa de construcción
-FROM node:latest AS builder
+# Use a specific Node.js version (adjust as needed)
+FROM node:18-alpine AS builder
 
-# Establece el directorio de trabajo para la etapa de construcción
+# Set working directory for build stage
 WORKDIR /app
 
-# Instala las dependencias (optimización de caché para construcciones posteriores)
+# Copy package.json and package-lock.json to install dependencies efficiently
+COPY package*.json ./
+
+# Install dependencies (cache optimization for subsequent builds)
 RUN npm install --production
 
-# Copia los archivos restantes del proyecto (excluyendo node_modules y otros archivos según .dockerignore)
-COPY . .
+# Copy remaining project files (excluding node_modules)
+COPY . .npmignore
 
-# Cambia a una imagen más ligera de Node.js para la etapa de ejecución
+# Switch to a slimmer Node.js image for runtime
 FROM node:18-alpine AS runner
 
-# Establece el directorio de trabajo para la etapa de ejecución
+# Set working directory for runtime
 WORKDIR /app
 
-# Copia solo los archivos necesarios de la etapa de construcción (excluyendo node_modules)
-COPY --from=builder /app/node_modules ./node_modules
+# Copy only the required files from builder stage (excluding node_modules)
+COPY --from=builder /app/node_modules /app/node_modules
 
-# Copia los archivos restantes del proyecto (excluyendo node_modules)
-COPY . .
+# Copy remaining project files (excluding node_modules)
+COPY . .npmignore
 
-# Ejecuta el servidor de producción de Remix
+
+# Run the Remix production server
 CMD ["npm", "run", "start"]
