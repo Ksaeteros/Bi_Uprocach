@@ -2,7 +2,7 @@
 FROM node:18-alpine AS builder
 
 # Set working directory for build stage
-WORKDIR /app
+WORKDIR /
 
 # Copy package.json and package-lock.json to install dependencies efficiently
 COPY package*.json ./
