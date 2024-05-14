@@ -41,7 +41,7 @@ const PopularCard = ({ isLoading }) => {
                 <MainCard content={false}>
                     <CardContent>
                         <Box sx={{ mb: 2 }}>
-                            <Typography variant="body1">Aqui va los elementos o el elemento embebido</Typography>
+                            <iframe width="100%" height="2000" src="https://app.powerbi.com/view?r=eyJrIjoiYTUxZDI5MWEtNjY5ZS00ZTc2LWEyYjItZjA0YTUyOGI1ZmU4IiwidCI6ImMwNWUxMWU1LTcwNmMtNGNlZi1iYTVlLTE4ZWVkYmYxMDAzNyJ9&isMobile=true&uid=qunlq" frameborder="0" style="border:0" allowfullscreen sandbox="allow-storage-access-by-user-activation allow-scripts allow-same-origin allow-popups allow-popups-to-escape-sandbox"></iframe>
                         </Box>
                     </CardContent>
                 </MainCard>
