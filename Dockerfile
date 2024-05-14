@@ -10,7 +10,7 @@ COPY package*.json ./
 # Install dependencies (cache optimization for subsequent builds)
 RUN npm install --production
 
-# Copy remaining project files (excluding node_modules)
+# Copy remaining project files (excluding node_modules and potentially other files based on .npmignore)
 COPY . .npmignore
 
 # Switch to a slimmer Node.js image for runtime
