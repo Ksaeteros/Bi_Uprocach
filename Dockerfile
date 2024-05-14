@@ -1,18 +1,29 @@
 # Utiliza una imagen oficial de Node.js como base
 FROM node:latest
 
-# Establece el directorio de trabajo en el contenedor
+# Set working directory for build stage
 WORKDIR /app
 
-# Copia los archivos de la aplicación al contenedor
-COPY . .
+# Copy package.json and package-lock.json to install dependencies efficiently
+COPY package*.json ./
 
-# Copia los archivos de construccion al directorio de trabajo en el contenedor
-COPY build /usr/src/app/build
+# Install dependencies (cache optimization for subsequent builds)
+RUN npm install --production
 
-# Instala las dependencias del proyecto utilizando npm o yarn
-RUN npm install 
+# Copy remaining project files (excluding node_modules)
+COPY . .npmignore
 
-RUN npm run build
+# Switch to a slimmer Node.js image for runtime
+FROM node:18-alpine AS runner
 
-CMD ["npm", "start"]
+# Set working directory for runtime
+WORKDIR /app
+
+# Copy only the required files from builder stage (excluding node_modules)
+COPY --from=builder /app/node_modules /app/node_modules
+
+# Copy remaining project files (excluding node_modules)
+COPY . .npmignore
+
+# Run the Remix production server
+CMD ["npm", "run", "start"]
