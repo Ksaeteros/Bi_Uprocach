@@ -4,9 +4,6 @@ FROM node:latest AS builder
 # Establece el directorio de trabajo para la etapa de construcción
 WORKDIR /app
 
-# Copia los archivos package.json y package-lock.json para instalar las dependencias de manera eficiente
-COPY package*.json ./
-
 # Instala las dependencias (optimización de caché para construcciones posteriores)
 RUN npm install --production
 
