@@ -26,7 +26,7 @@ const Dashboard = () => {
         <Grid container spacing={gridSpacing}>
             <Grid item xs={12}>
                 <Grid container spacing={gridSpacing}>
-                    <Grid item xs={12} md={4}>
+                    <Grid item l={100} md={100}>
                         <PopularCard isLoading={isLoading} />
                     </Grid>
                 </Grid>
