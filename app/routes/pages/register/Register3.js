@@ -42,7 +42,7 @@ const Register = () => {
                                             <Grid item>
                                                 <Stack alignItems="center" justifyContent="center" spacing={1}>
                                                     <Typography
-                                                        color={theme.palette.secondary.main}
+                                                        sx={{ color: '#006633' }}
                                                         gutterBottom
                                                         variant={matchDownSM ? 'h3' : 'h2'}
                                                     >
