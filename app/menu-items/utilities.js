@@ -1,12 +1,13 @@
 // assets
-import { IconTypography, IconPalette, IconShadow, IconWindmill } from '../../node_modules/@tabler/icons-react';
+import { IconTypography, IconPalette, IconShadow, IconWindmill, Icon123 } from '../../node_modules/@tabler/icons-react';
 
 // constant
 const icons = {
     IconTypography,
     IconPalette,
     IconShadow,
-    IconWindmill
+    IconWindmill,
+    Icon123
 };
 
 // ==============================|| UTILITIES MENU ITEMS ||============================== //
@@ -16,29 +17,61 @@ const utilities = {
     title: 'Utilities',
     type: 'group',
     children: [
-        {
-            id: 'util-typography',
-            title: 'Typography',
+        /*{
+            id: 'estructura-b',
+            title: 'Estructura B11',
             type: 'item',
             url: '/utils/typography',
-            icon: icons.IconTypography,
+            icon: icons.Icon123,
             breadcrumbs: false
         },
         {
-            id: 'util-color',
-            title: 'Color',
+            id: 'estructura-d',
+            title: 'Estructura D01',
             type: 'item',
             url: '/utils/color',
-            icon: icons.IconPalette,
+            icon: icons.Icon123,
             breadcrumbs: false
         },
         {
-            id: 'util-shadow',
-            title: 'Shadow',
+            id: 'estructura-s',
+            title: 'Estructura S01',
             type: 'item',
             url: '/utils/shadow',
-            icon: icons.IconShadow,
+            icon: icons.Icon123,
             breadcrumbs: false
+        },
+        {
+            id: 'estructura-c',
+            title: 'Estructura C01',
+            type: 'item',
+            url: '/utils/shadow',
+            icon: icons.Icon123,
+            breadcrumbs: false
+        },*/
+        {
+            id: 'estructura-c2',
+            title: 'Estructura C02',
+            type: 'item',
+            url: '/utils/shadow',
+            icon: icons.Icon123,
+            breadcrumbs: false
+        },
+        {
+            id: 'estructura-l',
+            title: 'Estructura L01',
+            type: 'collapse',
+            //url: '/utils/shadow',
+            icon: icons.Icon123,
+            children: [
+                {
+                    id: 'tabler',
+                    title: 'Liquidez Estructural',
+                    type: 'item',
+                    //url: '/utils/shadow',
+                    breadcrumbs: false
+                },
+            ]
         },
         {
             id: 'icons',

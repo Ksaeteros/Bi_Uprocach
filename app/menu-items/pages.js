@@ -11,26 +11,26 @@ const icons = {
 const pages = {
     id: 'pages',
     title: 'Pages',
-    caption: 'Pages Caption',
+    //caption: 'Pages Caption',
     type: 'group',
     children: [
         {
             id: 'authentication',
-            title: 'Authentication',
+            title: 'Autenticación',
             type: 'collapse',
             icon: icons.IconKey,
 
             children: [
                 {
                     id: 'login3',
-                    title: 'Login',
+                    title: 'Iniciar Sesión',
                     type: 'item',
                     url: '/pages/login/login3',
                     target: true
                 },
                 {
                     id: 'register3',
-                    title: 'Register',
+                    title: 'Registrarse',
                     type: 'item',
                     url: '/pages/register/register3',
                     target: true
